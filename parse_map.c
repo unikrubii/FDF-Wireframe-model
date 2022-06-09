@@ -6,11 +6,12 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:44:01 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/08 14:22:13 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/09 21:35:28 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mlx/mlx.h"
 
 void	fdf_init(t_fdf *fdf)
 {
@@ -43,8 +44,8 @@ void	free_st(t_fdf *fdf)
 		i++;
 	}
 	free(fdf->map);
-	free(fdf);
-	fdf = NULL;
+	// free(fdf);
+	// fdf = NULL;
 }
 
 void	get_map(char *file, t_fdf *fdf)
@@ -100,13 +101,13 @@ void	get_dimension(char *file, t_fdf *fdf)
 	get_map(file, fdf);
 }
 
-void	parse_map(char *file)
+void	parse_map(char *file, t_fdf *fdf)
 {
-	t_fdf	*fdf;
+	// t_fdf	*fdf;
 	int		i;
 	int		j;
 
-	fdf = (t_fdf *)malloc(sizeof(t_fdf));
+	// fdf = (t_fdf *)malloc(sizeof(t_fdf));
 	fdf_init(fdf);
 	get_dimension(file, fdf);
 	printf("width = %d\theight = %d\n", fdf->w, fdf->h);
@@ -122,14 +123,58 @@ void	parse_map(char *file)
 		printf("\n");
 		i++;
 	}
-	free_st(fdf);
+}
+
+void	draw(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+void	init_sc(char *file)
+{
+	t_fdf	fdf;
+	t_data	img;
+	int		grid;
+	int		i;
+	int		j;
+
+	// fdf = (t_fdf *)malloc(sizeof(t_fdf));
+	parse_map(file, &fdf);
+	grid = SC_WIDTH / fdf.w;
+	fdf.mlx = mlx_init();
+	fdf.win = mlx_new_window(fdf.mlx, SC_WIDTH, SC_HEIGHT, "WTFDF");
+	img.img = mlx_new_image(fdf.mlx, SC_WIDTH, SC_HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	printf("%d\t%d\n", img.line_length, img.bits_per_pixel);
+	i = 0;
+	j = 0;
+	while (i < 800)
+	{
+		j = 0;
+		while (j < 800)
+		{
+			if (i % grid == 0 || j % grid == 0)
+			{
+				// printf("%d\n", fdf.map[i / grid][j / grid]);
+				draw(&img, i, j, 0x00FFFFFF);
+			}
+			j++;
+		}
+		i++;
+	}
+	mlx_put_image_to_window(fdf.mlx, fdf.win, img.img, 0, 0);
+	mlx_loop(fdf.mlx);
+	free_st(&fdf);
 }
 
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		parse_map(av[1]);
+		init_sc(av[1]);
 	}
 	else
 	{
