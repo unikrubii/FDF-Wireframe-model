@@ -6,12 +6,11 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:44:01 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/09 21:35:28 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:54:12 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx/mlx.h"
 
 void	fdf_init(t_fdf *fdf)
 {

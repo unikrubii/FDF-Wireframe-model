@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:44:35 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/09 20:34:46 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:57:45 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+
+# ifdef __linux__
+#  include "mlx_linux/mlx.h"
+# else
+#  include "mlx/mlx.h"
+# endif
 
 # define SC_WIDTH 800
 # define SC_HEIGHT 800
