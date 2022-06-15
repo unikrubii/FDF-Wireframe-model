@@ -6,39 +6,27 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 14:03:50 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/05 21:58:17 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/14 15:05:18 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// size_t	ft_strlen(char *s)
-// {
-// 	size_t	i;
+void	gnl_strlcpy(char *dst, char *src, size_t dstsize)
+{
+	size_t	i;
 
-// 	if (!s)
-// 		return (0);
-// 	i = 0;
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
-
-// void	ft_strlcpy(char *dst, char *src, size_t dstsize)
-// {
-// 	size_t	i;
-
-// 	if (!dstsize || !src)
-// 		return ;
-// 	i = 0;
-// 	while (i < (dstsize - 1) && src[i])
-// 	{
-// 		dst[i] = src[i];
-// 		i++;
-// 	}
-// 	dst[i] = '\0';
-// 	return ;
-// }
+	if (!dstsize || !src)
+		return ;
+	i = 0;
+	while (i < (dstsize - 1) && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return ;
+}
 
 t_read	*init_read(int fd)
 {

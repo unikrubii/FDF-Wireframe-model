@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 14:04:26 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/05 21:57:39 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/14 15:09:46 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ char	*read_file(int fd, char *str)
 	{
 		tmp = (char *)malloc(ft_strlen(str) + fbyte + 1);
 		tmp[0] = '\0';
-		ft_strlcpy(tmp, str, ft_strlen(str) + 1);
-		ft_strlcpy(&tmp[ft_strlen(str)], buf, fbyte + 1);
+		gnl_strlcpy(tmp, str, ft_strlen(str) + 1);
+		gnl_strlcpy(&tmp[ft_strlen(str)], buf, fbyte + 1);
 		free(str);
 		if (bsn_pos(tmp) != -1)
 			break ;
@@ -76,7 +76,7 @@ char	*shift_str(char *str)
 		free(str);
 		return (NULL);
 	}
-	ft_strlcpy(new, &str[pos + 1], new_len);
+	gnl_strlcpy(new, &str[pos + 1], new_len);
 	free(str);
 	return (new);
 }
@@ -95,7 +95,7 @@ char	*get_ans(char *str)
 			free(str);
 			return (NULL);
 		}
-		ft_strlcpy(ans, str, ft_strlen(str) + 1);
+		gnl_strlcpy(ans, str, ft_strlen(str) + 1);
 		return (ans);
 	}
 	ans = (char *)malloc(sizeof(char) * (pos + 2));
@@ -104,7 +104,7 @@ char	*get_ans(char *str)
 		free(str);
 		return (NULL);
 	}
-	ft_strlcpy(ans, str, pos + 2);
+	gnl_strlcpy(ans, str, pos + 2);
 	return (ans);
 }
 
