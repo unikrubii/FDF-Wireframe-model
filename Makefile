@@ -6,13 +6,15 @@
 #    By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 12:48:41 by sthitiku          #+#    #+#              #
-#    Updated: 2022/06/14 23:48:21 by sthitiku         ###   ########.fr        #
+#    Updated: 2022/06/19 01:00:25 by sthitiku         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRCS = fdf_parse_map.c fdf_free.c fdf_draw.c fdf_error.c fdf_utils.c
+SRCS = 	fdf_parse_map.c fdf_free.c fdf_draw.c fdf_error.c fdf_utils.c \
+		fdf_draw_utils.c fdf_init.c fdf_key_draw.c main.c
+# SRCS = fdf_parse_map.c fdf_free.c fdf_bresenham.c fdf_error.c fdf_utils.c
 OBJS = $(SRCS:.c=.o)
 
 UNAME = $(shell uname -s)
@@ -72,7 +74,7 @@ fclean: clean
 
 re: fclean all
 
-run: re
+fun: re
 	@./$(NAME) test_maps/42.fdf
 
 leak: re

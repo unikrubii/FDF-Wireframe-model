@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 12:44:01 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/14 23:46:27 by sthitiku         ###   ########.fr       */
+/*   Created: 2022/06/19 01:07:48 by sthitiku          #+#    #+#             */
+/*   Updated: 2022/06/19 01:08:58 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fdf.h"
 
-static void	get_map(char *file, t_fdf *fdf)
+static void	get_map(char *file, t_data *data)
 {
 	int		fd;
 	int		i;
@@ -21,128 +21,104 @@ static void	get_map(char *file, t_fdf *fdf)
 
 	fd = open(file, O_RDONLY);
 	i = 0;
-	while (i < fdf->h)
+	while (i < data->h)
 	{
-		fdf->ln = get_next_line(fd);
-		map_num = ft_split(fdf->ln, ' ');
-		free(fdf->ln);
+		data->ln = get_next_line(fd);
+		map_num = ft_split(data->ln, ' ');
+		free(data->ln);
 		j = -1;
-		while (++j < fdf->w)
+		while (++j < data->w)
 		{
-			fdf->map[i][j] = ft_atoi(map_num[j]);
-			fdf->color[i][j] = ft_atoi_hex(map_num[j]);
+			data->map[i][j] = ft_atoi(map_num[j]);
+			data->color[i][j] = ft_atoi_hex(map_num[j]);
 		}
 		free_split(map_num);
 		i++;
 	}
-	fdf->ln = get_next_line(fd);
+	data->ln = get_next_line(fd);
 	close(fd);
 }
 
-void	map_alloc(t_fdf *fdf)
+void	map_alloc(t_data *data)
 {
 	int	i;
 
-	fdf->map = (int **)malloc(sizeof(int *) * fdf->h);
-	fdf->color = (long **)malloc(sizeof(long *) * fdf->h);
+	data->map = (int **)malloc(sizeof(int *) * data->h);
+	data->color = (long **)malloc(sizeof(long *) * data->h);
 	i = 0;
-	while (i < fdf->h)
+	while (i < data->h)
 	{
-		fdf->map[i] = (int *)malloc(sizeof(int) * fdf->w);
-		fdf->color[i] = (long *)malloc(sizeof(long) * fdf->w);
+		data->map[i] = (int *)malloc(sizeof(int) * data->w);
+		data->color[i] = (long *)malloc(sizeof(long) * data->w);
 		i++;
 	}
 }
 
-static void	get_dimension(char *file, t_fdf *fdf)
+static void	get_dimension(char *file, t_data *data)
 {
 	int		fd;
 	int		i;
 
 	fd = open(file, O_RDONLY);
-	fdf->ln = get_next_line(fd);
+	data->ln = get_next_line(fd);
 	i = 0;
-	while (fdf->ln[i] != '\n')
+	while (data->ln[i] != '\n')
 	{
-		while (fdf->ln[i] != ' ' && fdf->ln[i] != '\n' && fdf->ln[i])
+		while (data->ln[i] != ' ' && data->ln[i] != '\n' && data->ln[i])
 			i++;
-		fdf->w++;
-		while (fdf->ln[i] == ' ')
+		data->w++;
+		while (data->ln[i] == ' ')
 			i++;
 	}
-	free(fdf->ln);
-	fdf->ln = get_next_line(fd);
-	while (fdf->ln)
+	free(data->ln);
+	data->ln = get_next_line(fd);
+	while (data->ln)
 	{
-		fdf->h++;
-		free(fdf->ln);
-		fdf->ln = get_next_line(fd);
+		data->h++;
+		free(data->ln);
+		data->ln = get_next_line(fd);
 	}
 	close(fd);
 }
 
-static int	map_valid(char *file, t_fdf *fdf)
+static int	map_valid(char *file, t_data *d)
 {
 	int	fd;
 	int	i;
 
 	fd = open(file, O_RDONLY);
-	fdf->ln = get_next_line(fd);
-	while (fdf->ln)
+	d->ln = get_next_line(fd);
+	while (d->ln)
 	{
 		i = 0;
-		fdf->w_check = 0;
-		while (fdf->ln[i] != '\n')
+		d->w_check = 0;
+		while (d->ln[i] != '\n')
 		{
-			if (fdf->ln[i++] != ' ')
+			if (d->ln[i++] != ' ')
 			{
-				while (fdf->ln[i] != ' ' && fdf->ln[i] != '\n' && fdf->ln[i])
+				while (d->ln[i] != ' ' && d->ln[i] != '\n' && d->ln[i])
 					i++;
-				fdf->w_check++;
+				d->w_check++;
 			}
 		}
-		if (fdf->w_check != fdf->w)
-			fdf->m_status = 0;
-		free(fdf->ln);
-		fdf->ln = get_next_line(fd);
+		if (d->w_check != d->w)
+			d->m_status = 0;
+		free(d->ln);
+		d->ln = get_next_line(fd);
 	}
 	close(fd);
-	return (fdf->m_status);
+	return (d->m_status);
 }
 
-void	parse_map(char *file, t_fdf *fdf)
+void	parse_map(char *file, t_data *data)
 {
 	int		i;
 	int		j;
 
-	fdf_init(fdf);
-	get_dimension(file, fdf);
-	if (!map_valid(file, fdf))
+	data_init(data);
+	get_dimension(file, data);
+	if (!map_valid(file, data))
 		error_msg("Invalid Map\n");
-	map_alloc(fdf);
-	get_map(file, fdf);
-	i = 0;
-	while (i < fdf->h)
-	{
-		j = 0;
-		while (j < fdf->w)
-		{
-			printf("%3d", fdf->map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
-	{
-		init_sc(av[1]);
-	}
-	else
-	{
-		ft_putstr_fd("Usage: ./fdf <file name.fdf>\n", 2);
-	}
+	map_alloc(data);
+	get_map(file, data);
 }

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_error.c                                        :+:      :+:    :+:   */
+/*   fdf_key_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/14 14:18:06 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/19 01:52:22 by sthitiku         ###   ########.fr       */
+/*   Created: 2022/06/19 00:26:32 by sthitiku          #+#    #+#             */
+/*   Updated: 2022/06/19 12:15:11 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fdf.h"
+#include "../incs/key.h"
 
-void	error_msg(char *msg)
+int	close_win(t_data *data)
 {
-	ft_putstr_fd(msg, 2);
-	exit (MAP_INVALID);
+	mlx_destroy_image(data->mlx, data->img->img);
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_window(data->mlx, data->win);
+	free_st(data);
+	exit (SUCCESS);
 }
 
-void	mal_err(t_data *data)
+int	command(int key, t_data *data)
 {
-	ft_putstr_fd("Malloc Error\n", 2);
-	if (!data)
-		free_st(data);
-	exit (MALLOC_ERR);
+	printf("%d\n", key);
+	if (key == KEY_ESC)
+		close_win(data);
+	return (0);
 }

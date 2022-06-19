@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:19:58 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/14 21:20:46 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/19 01:06:24 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ long	ft_atoi_hex(char *s)
 	i = 0;
 	res = 0;
 	num = 0;
-	while (ft_isdigit(s[i]) || s[i] == ',' || s[i] == 'x')
+	while (ft_isdigit(s[i]))
+		i++;
+	while (s[i] == '0' || s[i] == ',' || s[i] == 'x')
 		i++;
 	while(s[i] != ' ' && s[i] != '\n' && s[i])
 	{
@@ -34,24 +36,21 @@ long	ft_atoi_hex(char *s)
 		res = res * 16 + num;
 		i++;
 	}
+	if (res == 0)
+		res = 3355443;
 	return (res);
 }
 
-char	*ft_itoa_hex(long n)
+float	abso(int n)
 {
-	int		i;
-	char	*hex;
-	
-	hex = (char *)malloc(sizeof(char) * 11);
-	hex[0] = '0';
-	hex[1] = 'x';
-	hex[10] = '\0';
-	i = 9;
-	while (i > 1)
-	{
-		hex[i] = "0123456789abfdef"[n % 16];
-		n /= 16;
-		i--;
-	}
-	return (hex);
+	if (n < 0)
+		n *= -1;
+	return (n);
+}
+
+int	max_i(float a, float b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   data.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:44:35 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/14 22:57:15 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/17 20:53:25 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <math.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
 
@@ -25,41 +26,78 @@
 #  include "../mlx/mlx.h"
 # endif
 
-# define SC_WIDTH 800
-# define SC_HEIGHT 800
+# define SUCCESS 0
 # define MAP_INVALID 1
+# define MALLOC_ERR 10
 
-typedef struct s_fdf
+# define SC_WIDTH 1000
+# define SC_HEIGHT 1000
+# define RED 0xff0000
+# define WHITE 0
+
+typedef struct s_coor
+{
+	float	x;
+	float	y;
+	float	x1;
+	float	y1;
+	int		z;
+	int		z1;
+	int		slope;
+	long	color;
+} t_coor;
+
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bbp;
+	int		line_l;
+	int		endian;
+}				t_img;
+
+typedef struct s_data
 {
 	int		w;
 	int		h;
+	float	x;
+	float	y;
+	float	x1;
+	float	y1;
 	int		w_check;
 	int		m_status;
+	int		zoom;
 	int		**map;
 	long	**color;
+	long	clrs;
 	void	*mlx;
 	void	*win;
 	char	*ln;
-} t_fdf;
+	t_img	*img;
+} t_data;
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-void	fdf_init(t_fdf *fdf);
+void	data_init(t_data *data);
 void	free_split(char **str);
-void	free_st(t_fdf *fdf);
+void	free_st(t_data *data);
 void	init_sc(char *file);
-void	parse_map(char *file, t_fdf *fdf);
-long	ft_atoi_hex(char *s);
-char	*ft_itoa_hex(long n);
+void	parse_map(char *file, t_data *data);
 
-void	draw(t_data *data, int x, int y, int color);
+long	ft_atoi_hex(char *s);
+float	abso(int n);
+int		max_i(float a, float b);
+
+void	draw(t_img *img, int x, int y, unsigned int color);
+void	coor_init(t_coor *coor, t_data *data);
+void	data_init(t_data *data);
 
 void	error_msg(char *msg);
+void	mal_err(t_data *data);
+
+void	init_sc(char *file);
+void	add_3d(t_coor *coor, t_data *data);
+void	zoom(t_coor *coor, t_data *data);
+void	shift_pos_to_start(t_coor *coor, t_data *data);
+
+int		command(int key, t_data *data);
+int		close_win(t_data *data);
 
 #endif
