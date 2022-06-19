@@ -32,8 +32,7 @@
 
 # define SC_WIDTH 1000
 # define SC_HEIGHT 1000
-# define RED 0xff0000
-# define WHITE 0
+# define D_ZOOM 20
 
 typedef struct s_coor
 {
@@ -63,9 +62,13 @@ typedef struct s_data
 	float	y;
 	float	x1;
 	float	y1;
+	int		shift_x;
+	int		shift_y;
 	int		w_check;
 	int		m_status;
 	int		zoom;
+	int		slope;
+	float	x_rot;
 	int		**map;
 	long	**color;
 	long	clrs;
@@ -93,11 +96,13 @@ void	error_msg(char *msg);
 void	mal_err(t_data *data);
 
 void	init_sc(char *file);
+void	render(t_data *data, t_img *img);
 void	add_3d(t_coor *coor, t_data *data);
 void	zoom(t_coor *coor, t_data *data);
 void	shift_pos_to_start(t_coor *coor, t_data *data);
 
 int		command(int key, t_data *data);
 int		close_win(t_data *data);
+int		test_m(t_data *data);
 
 #endif

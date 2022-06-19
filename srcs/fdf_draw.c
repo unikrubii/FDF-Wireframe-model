@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:15:18 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/19 01:48:57 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/19 16:50:47 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ static void	line(t_data *data, t_img *img)
 	}
 }
 
-static void	draw_line(t_data *data, t_img *img)
+void	render(t_data *data, t_img *img)
 {
 	t_coor	coor;
 
+	ft_bzero(img->addr, SC_HEIGHT * SC_WIDTH * (img->bbp / 8));
 	data->y = 0;
 	while (data->y < data->h)
 	{
@@ -74,6 +75,7 @@ static void	draw_line(t_data *data, t_img *img)
 		}
 		data->y++;
 	}
+	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
 }
 
 void	init_sc(char *file)
@@ -92,13 +94,14 @@ void	init_sc(char *file)
 	data->win = mlx_new_window(data->mlx, SC_WIDTH, SC_HEIGHT, "W T FDF");
 	img.img = mlx_new_image(data->mlx, SC_WIDTH, SC_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bbp, &img.line_l, &img.endian);
-	draw_line(data, &img);
-	mlx_put_image_to_window(data->mlx, data->win, img.img, 0, 0);
+	printf("test\n");
+	render(data, &img);
+	// mlx_put_image_to_window(data->mlx, data->win, img.img, 0, 0);
 	data->img = &img;
 	mlx_hook(data->win, 2, 1L<<0, command, data);
+	mlx_hook(data->win, 12, 1L<<15, test_m, data);
 	mlx_hook(data->win, 17, 1L<<17, close_win, data);
 	mlx_loop(data->mlx);
-	// free_st(data);
 }
 
 // void	init_sc(char *file)
