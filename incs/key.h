@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:26:55 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 15:27:32 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:22:33 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define ZOOM_DIF 1
 # define SHIFT_DIF 5
-# define SLOPE_DIF 1.1
+# define SLOPE_DIF 1.05
 
 # ifdef __linux__
 #  define K_ESC 65307

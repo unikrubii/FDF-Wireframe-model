@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:26:32 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 17:08:57 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:27:09 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ int	hook_key(int key, t_data *data)
 		mot->shift_y -= SHIFT_DIF;
 	if (key == K_DOWN)
 		mot->shift_y += SHIFT_DIF;
+	if (key == K_P)
+	{
+		if (mot->parr == 1)
+			mot->parr = 0;
+		else
+			mot->parr = 1;
+	}
 	if (key == K_PLUS)
 	{
 		data->zoom += ZOOM_DIF;

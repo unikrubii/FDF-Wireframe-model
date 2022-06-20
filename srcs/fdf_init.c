@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:21:10 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 15:26:44 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:24:35 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	mot_init(t_data *data)
 	mot->slope = 1;
 	mot->shift_x = 0;
 	mot->shift_x = 0;
+	mot->parr = 0;
 }
 
 void	data_init(t_data *data)

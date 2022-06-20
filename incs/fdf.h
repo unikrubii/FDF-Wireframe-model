@@ -58,6 +58,7 @@ typedef struct s_mot
 {
 	int		shift_x;
 	int		shift_y;
+	int		parr;
 	float	slope;
 }	t_mot;
 
