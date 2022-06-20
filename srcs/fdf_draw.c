@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:15:18 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 23:27:40 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:30:11 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,3 @@ void	init_sc(char *file)
 	mlx_hook(data->win, 17, 1L << 17, close_win, data);
 	mlx_loop(data->mlx);
 }
-
-			// data->clrs = data->color[(int)data->y][(int)data->x];
-			// if (data->x < data->w - 1)
-			// {
-			// 	data->x1 = data->x + 1;
-			// 	data->y1 = data->y;
-			// 	line(data, img);
-			// }
-			// if (data->y < data->h - 1)
-			// {
-			// 	data->x1 = data->x;
-			// 	data->y1 = data->y + 1;
-			// 	line(data, img);
-			// }
