@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 01:07:48 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/19 01:08:58 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 23:31:09 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	get_dimension(char *file, t_data *data)
 	i = 0;
 	while (data->ln[i] != '\n')
 	{
+		while (data->ln[i] == ' ')
+			i++;
 		while (data->ln[i] != ' ' && data->ln[i] != '\n' && data->ln[i])
 			i++;
 		data->w++;
@@ -110,15 +112,20 @@ static int	map_valid(char *file, t_data *d)
 	return (d->m_status);
 }
 
-void	parse_map(char *file, t_data *data)
+t_data	*parse_map(char *file)
 {
 	int		i;
 	int		j;
+	t_data	*data;
 
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		mal_err(data);
 	data_init(data);
 	get_dimension(file, data);
 	if (!map_valid(file, data))
 		error_msg("Invalid Map\n");
 	map_alloc(data);
 	get_map(file, data);
+	return (data);
 }

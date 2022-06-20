@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdfa_free.c                                         :+:      :+:    :+:   */
+/*   fdf_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/14 12:54:58 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/17 20:51:13 by sthitiku         ###   ########.fr       */
+/*   Created: 2022/06/20 23:30:49 by sthitiku          #+#    #+#             */
+/*   Updated: 2022/06/20 23:30:51 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fdf.h"
-
-// void	data_init(t_data *data)
-// {
-// 	data->h = 1;
-// 	data->w = 0;
-// 	data->zoom = 20;
-// 	data->w_check = 0;
-// 	data->m_status = 1;
-// 	data->map = NULL;
-// }
 
 void	free_split(char **str)
 {
