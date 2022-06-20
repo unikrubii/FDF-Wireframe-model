@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 01:07:48 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 19:49:03 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 23:31:09 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ static int	map_valid(char *file, t_data *d)
 		d->ln = get_next_line(fd);
 	}
 	close(fd);
-	printf("status %d\n", d->m_status);
 	return (d->m_status);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:21:10 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 21:54:45 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 22:27:46 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	coor_init(t_coor *coor, t_data *data)
 	coor->z1 = data->map[(int)data->y1][(int)data->x1];
 }
 
-void	mot_init(t_data *data)
+static void	mot_init(t_data *data)
 {
 	t_mot	*mot;
 
@@ -34,7 +34,7 @@ void	mot_init(t_data *data)
 	mot->moom = M_PI_4;
 	mot->x_rot = 0.3;
 	mot->y_rot = 0;
-	mot->z_rot = -0.2;
+	mot->z_rot = 0;
 }
 
 void	data_init(t_data *data)
@@ -46,4 +46,16 @@ void	data_init(t_data *data)
 	data->w_check = 0;
 	data->m_status = 1;
 	data->map = NULL;
+	data->c_shift = 0;
+}
+
+void	reset(t_data *data)
+{
+	t_mot	*mot;
+
+	mot = &data->mot;
+	mot->x_rot = 0.3;
+	mot->y_rot = 0;
+	mot->z_rot = 0;
+	data->c_shift = 0;
 }

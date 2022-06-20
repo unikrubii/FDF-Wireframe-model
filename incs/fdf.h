@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.h                                              :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 12:44:35 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/17 20:53:25 by sthitiku         ###   ########.fr       */
+/*   Created: 2022/06/20 23:20:08 by sthitiku          #+#    #+#             */
+/*   Updated: 2022/06/20 23:20:10 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ typedef struct s_img
 
 typedef struct s_mot
 {
-	int				shift_x;
-	int				shift_y;
-	int				parr;
-	float			slope;
-	float			moom;
-	float			x_rot;
-	float			y_rot;
-	float			z_rot;
+	int		shift_x;
+	int		shift_y;
+	int		parr;
+	float	slope;
+	float	moom;
+	float	x_rot;
+	float	y_rot;
+	float	z_rot;
 }	t_mot;
 
 typedef struct s_data
@@ -77,6 +77,7 @@ typedef struct s_data
 	int		w_check;
 	int		m_status;
 	int		zoom;
+	int		c_shift;
 	float	slope;
 	float	x_rot;
 	int		**map;
@@ -89,7 +90,6 @@ typedef struct s_data
 	t_mot	mot;
 }	t_data;
 
-void	data_init(t_data *data);
 void	free_split(char **str);
 void	free_st(t_data *data);
 void	init_sc(char *file);
@@ -101,6 +101,8 @@ int		max_i(float a, float b);
 
 void	draw(t_img *img, int x, int y, unsigned int color);
 void	coor_init(t_coor *coor, t_data *data);
+void	reset(t_data *data);
+void	data_init(t_data *data);
 
 void	error_msg(char *msg);
 void	mal_err(t_data *data);

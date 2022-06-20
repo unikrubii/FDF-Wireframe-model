@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:26:32 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 21:48:52 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 23:31:04 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,22 @@ int	test_m(t_data *data)
 
 void	hook_3(int key, t_data *data, t_mot *mot)
 {
+	if (key == K_R)
+		reset(data);
 	if (key == K_P)
 	{
-		if (mot->parr == 1)
-			mot->parr = 0;
-		else
+		if (mot->parr == 0)
+			mot->parr = 2;
+		else if (mot->parr == 2)
+		{
 			mot->parr = 1;
-	}
-	if (key == K_PLUS)
-	{
-		data->zoom += ZOOM_DIF;
-		mot->slope += 0.05;
-	}
-	if (key == K_MINUS)
-	{
-		data->zoom -= ZOOM_DIF;
-		mot->slope -= 0.05;
+			mot->moom = 0;
+		}
+		else
+		{
+			mot->parr = 0;
+			mot->moom = M_PI_4;
+		}
 	}
 }
 
@@ -59,6 +59,20 @@ void	hook_2(int key, t_data *data, t_mot *mot)
 		mot->y_rot += 0.1;
 	if (key == K_S)
 		mot->y_rot -= 0.1;
+	if (key == K_I)
+		data->c_shift += C_SHIFT;
+	if (key == K_O)
+		data->c_shift -= C_SHIFT;
+	if (key == K_PLUS)
+	{
+		data->zoom += ZOOM_DIF;
+		mot->slope += 0.05;
+	}
+	if (key == K_MINUS)
+	{
+		data->zoom -= ZOOM_DIF;
+		mot->slope -= 0.05;
+	}
 	else
 		hook_3(key, data, mot);
 }
@@ -66,7 +80,7 @@ void	hook_2(int key, t_data *data, t_mot *mot)
 int	hook_key(int key, t_data *data)
 {
 	t_mot	*mot;
-	
+
 	mot = &data->mot;
 	if (key == K_ESC)
 		close_win(data);
