@@ -56,12 +56,14 @@ typedef struct s_img
 
 typedef struct s_mot
 {
-	int		shift_x;
-	int		shift_y;
-	int		parr;
-	float	slope;
-	float	moom;
-	
+	int				shift_x;
+	int				shift_y;
+	int				parr;
+	float			slope;
+	float			moom;
+	float			x_rot;
+	float			y_rot;
+	float			z_rot;
 }	t_mot;
 
 typedef struct s_data
@@ -106,6 +108,7 @@ void	mal_err(t_data *data);
 void	init_sc(char *file);
 void	render(t_data *data, t_img *img);
 void	add_3d(t_coor *coor, t_data *data);
+void	rotate(t_coor *coor, t_data *data);
 
 int		hook_key(int key, t_data *data);
 int		close_win(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:21:10 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 19:51:11 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:54:45 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	mot_init(t_data *data)
 	mot->shift_x = 0;
 	mot->parr = 0;
 	mot->moom = M_PI_4;
+	mot->x_rot = 0.3;
+	mot->y_rot = 0;
+	mot->z_rot = -0.2;
 }
 
 void	data_init(t_data *data)

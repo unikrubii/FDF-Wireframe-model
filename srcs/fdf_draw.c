@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:15:18 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 19:49:58 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 20:35:27 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	line(t_data *data, t_img *img)
 	coor_init(&coor, data);
 	if (coor.z != 0 && data->clrs == 3355443L)
 		data->clrs = 0x902020;
+	rotate(&coor, data);
 	add_3d(&coor, data);
 	x_step = coor.x1 - coor.x;
 	y_step = coor.y1 - coor.y;
