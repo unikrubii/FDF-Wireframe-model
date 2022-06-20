@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 01:07:48 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 15:14:34 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:23:22 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	get_dimension(char *file, t_data *data)
 	i = 0;
 	while (data->ln[i] != '\n')
 	{
+		while (data->ln[i] == ' ')
+			i++;
 		while (data->ln[i] != ' ' && data->ln[i] != '\n' && data->ln[i])
 			i++;
 		data->w++;
