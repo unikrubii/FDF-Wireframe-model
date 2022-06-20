@@ -104,8 +104,6 @@ void	mal_err(t_data *data);
 void	init_sc(char *file);
 void	render(t_data *data, t_img *img);
 void	add_3d(t_coor *coor, t_data *data);
-void	zoom(t_coor *coor, t_data *data);
-void	shift_pos_to_start(t_coor *coor, t_data *data);
 
 int		hook_key(int key, t_data *data);
 int		close_win(t_data *data);

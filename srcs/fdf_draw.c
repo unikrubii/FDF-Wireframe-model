@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:15:18 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 15:08:50 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:56:10 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ static void	line(t_data *data, t_img *img)
 	coor_init(&coor, data);
 	if (coor.z != 0 && data->clrs == 3355443L)
 		data->clrs = 0x902020;
-	zoom(&coor, data);
 	add_3d(&coor, data);
-	shift_pos_to_start(&coor, data);
 	x_step = coor.x1 - coor.x;
 	y_step = coor.y1 - coor.y;
 	max = max_i(abso(x_step), abso(y_step));
