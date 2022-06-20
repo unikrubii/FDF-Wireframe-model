@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 01:07:48 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 15:23:22 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:49:03 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,15 +113,20 @@ static int	map_valid(char *file, t_data *d)
 	return (d->m_status);
 }
 
-void	parse_map(char *file, t_data *data)
+t_data	*parse_map(char *file)
 {
 	int		i;
 	int		j;
+	t_data	*data;
 
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		mal_err(data);
 	data_init(data);
 	get_dimension(file, data);
 	if (!map_valid(file, data))
 		error_msg("Invalid Map\n");
 	map_alloc(data);
 	get_map(file, data);
+	return (data);
 }

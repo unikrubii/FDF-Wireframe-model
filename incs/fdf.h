@@ -60,6 +60,8 @@ typedef struct s_mot
 	int		shift_y;
 	int		parr;
 	float	slope;
+	float	moom;
+	
 }	t_mot;
 
 typedef struct s_data
@@ -89,7 +91,7 @@ void	data_init(t_data *data);
 void	free_split(char **str);
 void	free_st(t_data *data);
 void	init_sc(char *file);
-void	parse_map(char *file, t_data *data);
+t_data	*parse_map(char *file);
 
 long	ft_atoi_hex(char *s);
 float	abso(int n);
@@ -97,7 +99,6 @@ int		max_i(float a, float b);
 
 void	draw(t_img *img, int x, int y, unsigned int color);
 void	coor_init(t_coor *coor, t_data *data);
-void	data_init(t_data *data);
 
 void	error_msg(char *msg);
 void	mal_err(t_data *data);

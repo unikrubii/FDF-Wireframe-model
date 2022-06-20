@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:15:18 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 17:56:10 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:49:58 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,7 @@ void	init_sc(char *file)
 	t_img	img;
 	int		grid;
 
-	data = (t_data *)malloc(sizeof(t_data));
-	if (!data)
-		mal_err(data);
-	parse_map(file, data);
+	data = parse_map(file);
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		mal_err(data);
