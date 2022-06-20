@@ -6,7 +6,7 @@
 #    By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 12:48:41 by sthitiku          #+#    #+#              #
-#    Updated: 2022/06/19 12:43:53 by sthitiku         ###   ########.fr        #
+#    Updated: 2022/06/20 14:55:19 by sthitiku         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ LIBFT_DIR = libft/
 SRCS_DIR = srcs/
 OBJS_DIR = objs/
 INCS_DIR = incs/
-HEADER = fdf.h
+HEADER = fdf.h key.h
 
 CC = gcc
 # CFLAGS = -Wall -Werror -Wextra

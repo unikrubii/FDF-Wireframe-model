@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:21:10 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 14:41:54 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:12:42 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,21 @@ void	coor_init(t_coor *coor, t_data *data)
 	coor->y1 = data->y1;
 	coor->z = data->map[(int)data->y][(int)data->x];
 	coor->z1 = data->map[(int)data->y1][(int)data->x1];
-	coor->slope = 1;
+}
+
+void	mot_init(t_data *data)
+{
+	t_mot	*mot;
+
+	mot = &data->mot;
+	mot->slope = 1;
+	mot->shift_x = 0;
+	mot->shift_x = 0;
 }
 
 void	data_init(t_data *data)
 {
+	mot_init(data);
 	data->h = 1;
 	data->w = 0;
 	data->zoom = 20;

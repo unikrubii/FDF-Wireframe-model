@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:26:32 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 14:34:35 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:16:23 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,27 @@ int	close_win(t_data *data)
 	exit (SUCCESS);
 }
 
-int	command(int key, t_data *data)
+int	test_m(t_data *data)
 {
-	printf("%d\n", key);
-	if (key == K_ESC)
-		close_win(data);
+	render(data, data->img);
 	return (0);
 }
 
-int	test_m(t_data *data)
+int	hook_key(int key, t_data *data)
 {
+	t_mot	*mot;
+	
+	mot = &data->mot;
+	if (key == K_ESC)
+		close_win(data);
+	if (key == K_LEFT)
+		mot->shift_x -= SHIFT_DIF;
+	if (key == K_RIGHT)
+		mot->shift_x += SHIFT_DIF;
+	if (key == K_UP)
+		mot->shift_y -= SHIFT_DIF;
+	if (key == K_DOWN)
+		mot->shift_y += SHIFT_DIF;
 	render(data, data->img);
 	return (0);
 }

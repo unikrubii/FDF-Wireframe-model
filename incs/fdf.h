@@ -30,9 +30,8 @@
 # define MAP_INVALID 1
 # define MALLOC_ERR 10
 
-# define SC_WIDTH 1000
-# define SC_HEIGHT 1000
-# define D_ZOOM 20
+# define SC_WIDTH 1500
+# define SC_HEIGHT 800
 
 typedef struct s_coor
 {
@@ -40,19 +39,27 @@ typedef struct s_coor
 	float	y;
 	float	x1;
 	float	y1;
-	int		z;
-	int		z1;
+	float	z;
+	float	z1;
 	int		slope;
 	long	color;
-} t_coor;
+}	t_coor;
 
-typedef struct	s_img {
+typedef struct s_img
+{
 	void	*img;
 	char	*addr;
 	int		bbp;
 	int		line_l;
 	int		endian;
-}				t_img;
+}	t_img;
+
+typedef struct s_mot
+{
+	int		shift_x;
+	int		shift_y;
+	float	slope;
+}	t_mot;
 
 typedef struct s_data
 {
@@ -62,12 +69,10 @@ typedef struct s_data
 	float	y;
 	float	x1;
 	float	y1;
-	int		shift_x;
-	int		shift_y;
 	int		w_check;
 	int		m_status;
 	int		zoom;
-	int		slope;
+	float	slope;
 	float	x_rot;
 	int		**map;
 	long	**color;
@@ -76,7 +81,8 @@ typedef struct s_data
 	void	*win;
 	char	*ln;
 	t_img	*img;
-} t_data;
+	t_mot	mot;
+}	t_data;
 
 void	data_init(t_data *data);
 void	free_split(char **str);
@@ -101,7 +107,7 @@ void	add_3d(t_coor *coor, t_data *data);
 void	zoom(t_coor *coor, t_data *data);
 void	shift_pos_to_start(t_coor *coor, t_data *data);
 
-int		command(int key, t_data *data);
+int		hook_key(int key, t_data *data);
 int		close_win(t_data *data);
 int		test_m(t_data *data);
 
