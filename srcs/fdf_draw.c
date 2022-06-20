@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:15:18 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/19 16:50:47 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:38:30 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	line(t_data *data, t_img *img)
 	t_coor	coor;
 
 	coor_init(&coor, data);
+	if (coor.z != 0 && data->clrs == 3355443L)
+		data->clrs = 0x902020;
 	zoom(&coor, data);
-	if (coor.z != 0)
-		data->clrs = 0xff2222;
 	add_3d(&coor, data);
 	shift_pos_to_start(&coor, data);
 	x_step = coor.x1 - coor.x;
@@ -103,28 +103,3 @@ void	init_sc(char *file)
 	mlx_hook(data->win, 17, 1L<<17, close_win, data);
 	mlx_loop(data->mlx);
 }
-
-// void	init_sc(char *file)
-// {
-// 	t_data	*data;
-// 	t_img	img;
-// 	int		grid;
-
-// 	data = (t_data *)malloc(sizeof(t_data));
-// 	if (!data)
-// 		mal_err(data);
-// 	parse_map(file, data);
-// 	data->mlx = mlx_init();
-// 	if (!data->mlx)
-// 		exit (MALLOC_ERR);
-// 	data->win = mlx_new_window(data->mlx, SC_WIDTH, SC_HEIGHT, "W T FDF");
-// 	img.img = mlx_new_image(data->mlx, SC_WIDTH, SC_HEIGHT);
-// 	img.addr = mlx_get_data_addr(img.img, &img.bbp, &img.line_l, &img.endian);
-// 	draw_line(data, &img);
-// 	mlx_put_image_to_window(data->mlx, data->win, img.img, 0, 0);
-// 	data->img = &img;
-// 	mlx_hook(data->win, 2, 1L<<0, command, data);
-// 	mlx_hook(data->win, 17, 1L<<17, close_win, data);
-// 	mlx_loop(data->mlx);
-// 	free_st(data);
-// }

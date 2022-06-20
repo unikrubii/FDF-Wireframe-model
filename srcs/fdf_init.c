@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:21:10 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/18 22:22:19 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:41:54 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	coor_init(t_coor *coor, t_data *data)
 	coor->y1 = data->y1;
 	coor->z = data->map[(int)data->y][(int)data->x];
 	coor->z1 = data->map[(int)data->y1][(int)data->x1];
+	coor->slope = 1;
 }
 
 void	data_init(t_data *data)

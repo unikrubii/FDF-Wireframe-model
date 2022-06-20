@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:19:36 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/19 16:55:05 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 14:42:02 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	add_3d(t_coor *coor, t_data *data)
 {
-
 	coor->x = (coor->x - coor->y) * cos(0.8 * 1);
-	coor->y = (coor->x + coor->y) * sin(0.8 * 1) - (coor->z * data->slope);
+	coor->y = (coor->x + coor->y) * sin(0.8 * 1) - (coor->z * coor->slope);
 	coor->x1 = (coor->x1 - coor->y1) * cos(0.8 * 1);
-	coor->y1 = (coor->x1 + coor->y1) * sin(0.8 * 1) - (coor->z1 * data->slope);
+	coor->y1 = (coor->x1 + coor->y1) * sin(0.8 * 1) - (coor->z1 * coor->slope);
+	
 }
 
 void	zoom(t_coor *coor, t_data *data)
