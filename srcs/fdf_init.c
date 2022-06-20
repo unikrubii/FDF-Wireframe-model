@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:21:10 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 22:27:46 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:38:22 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	reset(t_data *data)
 	mot->x_rot = 0.3;
 	mot->y_rot = 0;
 	mot->z_rot = 0;
+	mot->slope = 1;
 	data->c_shift = 0;
 }
