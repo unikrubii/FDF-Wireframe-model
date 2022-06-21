@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 01:07:48 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/21 20:08:25 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:55:27 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	get_map(char *file, t_data *data)
 void	map_alloc(t_data *data)
 {
 	int	i;
+	int	j;
 
 	data->map = (int **)malloc(sizeof(int *) * data->h);
 	data->color = (long **)malloc(sizeof(long *) * data->h);
@@ -50,6 +51,13 @@ void	map_alloc(t_data *data)
 	{
 		data->map[i] = (int *)malloc(sizeof(int) * data->w);
 		data->color[i] = (long *)malloc(sizeof(long) * data->w);
+		j = 0;
+		while (j < data->w)
+		{
+			data->map[i][j] = 0;
+			data->color[i][j] = 0L;
+			j++;
+		}	
 		i++;
 	}
 }
