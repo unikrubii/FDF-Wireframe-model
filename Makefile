@@ -6,7 +6,7 @@
 #    By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 12:48:41 by sthitiku          #+#    #+#              #
-#    Updated: 2022/06/21 22:55:36 by sthitiku         ###   ########.fr        #
+#    Updated: 2022/06/21 23:29:27 by sthitiku         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 
 clean:
 	@make clean -C $(LIBFT_DIR) --silent
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_DIR)
 	@echo CLEAN!!
 
 fclean: clean
