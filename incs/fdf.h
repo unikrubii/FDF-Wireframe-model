@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:20:08 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/21 21:03:54 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:59:00 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_coor
 	float	z;
 	float	z1;
 	int		slope;
+	long	color;
 }	t_coor;
 
 typedef struct s_img
@@ -77,6 +78,8 @@ typedef struct s_data
 	int		m_status;
 	int		zoom;
 	int		c_shift;
+	float	slope;
+	float	x_rot;
 	int		**map;
 	long	**color;
 	long	clrs;

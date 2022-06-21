@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:21:10 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/21 20:46:47 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/20 22:27:46 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,11 @@ void	data_init(t_data *data)
 	mot_init(data);
 	data->h = 1;
 	data->w = 0;
-	data->x = 0;
-	data->y = 0;
-	data->x1 = 0;
-	data->y1 = 0;
 	data->zoom = 20;
 	data->w_check = 0;
 	data->m_status = 1;
 	data->map = NULL;
 	data->c_shift = 0;
-	data->clrs = 0;
 }
 
 void	reset(t_data *data)
@@ -62,6 +57,5 @@ void	reset(t_data *data)
 	mot->x_rot = 0.3;
 	mot->y_rot = 0;
 	mot->z_rot = 0;
-	mot->slope = 1;
 	data->c_shift = 0;
 }
