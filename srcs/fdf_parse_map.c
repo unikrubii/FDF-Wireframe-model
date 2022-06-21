@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 01:07:48 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 23:31:09 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:08:25 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ static int	map_valid(char *file, t_data *d)
 
 t_data	*parse_map(char *file)
 {
-	int		i;
-	int		j;
 	t_data	*data;
 
 	data = (t_data *)malloc(sizeof(t_data));
