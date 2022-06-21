@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:20:08 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 23:20:10 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:13:49 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	draw(t_img *img, int x, int y, unsigned int color);
 void	coor_init(t_coor *coor, t_data *data);
 void	reset(t_data *data);
 void	data_init(t_data *data);
+void	instruction(t_data *data);
 
 void	error_msg(char *msg);
 void	mal_err(t_data *data);

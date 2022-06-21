@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:15:18 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/21 00:30:11 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:13:46 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static void	render_algo(t_data *data, t_img *img)
 
 void	render(t_data *data, t_img *img)
 {
-	t_coor	coor;
-
 	ft_bzero(img->addr, SC_HEIGHT * SC_WIDTH * (img->bbp / 8));
 	data->y = 0;
 	while (data->y < data->h)
@@ -80,13 +78,13 @@ void	render(t_data *data, t_img *img)
 		data->y++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
+	instruction(data);
 }
 
 void	init_sc(char *file)
 {
 	t_data	*data;
 	t_img	img;
-	int		grid;
 
 	data = parse_map(file);
 	data->mlx = mlx_init();
