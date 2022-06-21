@@ -6,7 +6,7 @@
 #    By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 12:48:41 by sthitiku          #+#    #+#              #
-#    Updated: 2022/06/21 00:36:26 by sthitiku         ###   ########.fr        #
+#    Updated: 2022/06/21 22:55:36 by sthitiku         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,5 @@ fun: re
 
 leak: all
 	@valgrind --leak-check=full ./$(NAME) test_maps/42.fdf
-
-fm: re
-	@./$(NAME) false.fdf
 
 .PHONY: all clean fclean re
