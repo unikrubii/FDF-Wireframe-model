@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 23:55:48 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/21 22:48:42 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/21 23:11:44 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	check_file(char *file)
 	int		ret;
 	int		readf;
 	char	buf[10];
-	
+
 	ret = 1;
 	fd = open(file, O_RDONLY);
 	readf = read(fd, buf, 10);
