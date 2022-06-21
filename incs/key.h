@@ -6,7 +6,7 @@
 /*   By: sthitiku <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:26:55 by sthitiku          #+#    #+#             */
-/*   Updated: 2022/06/20 21:41:03 by sthitiku         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:27:38 by sthitiku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@
 #  define K_L 108
 #  define K_Q 113
 #  define K_E 101
-#  define K_Z 122
-#  define K_C 99
 # else
 #  define K_ESC 53
 #  define K_UP 126
@@ -62,6 +60,8 @@
 #  define K_K 40
 #  define K_O 31
 #  define K_L 37
+#  define K_Q 12
+#  define K_E 14
 # endif
 
 #endif
